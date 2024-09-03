@@ -44,6 +44,7 @@ function toggle(e) {
 const swiper = new Swiper('.swiper', {
     // Optional parameters
     loop: true,
+    delay: true,
 
     // If we need pagination
     pagination: {
