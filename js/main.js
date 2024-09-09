@@ -51,3 +51,21 @@ const swiper = new Swiper('.swiper', {
         el: '.swiper-pagination',
     }
 });
+
+// show search
+const searchButton = document.querySelector('.t-search'),
+    tClose = document.querySelector('.search-close'),
+    showClass = document.querySelector('.site')
+searchButton.addEventListener('click', function () {
+    showClass.classList.toggle('showsearch')
+})
+tClose.addEventListener('click', function () {
+    showClass.classList.remove('showsearch')
+})
+
+// show dpt menu
+const dptButton = document.querySelector('.dpt-cat .dpt-trigger'),
+    dptClass = document.querySelector('.site')
+dptButton.addEventListener('click', function () {
+    dptClass.classList.toggle('showdpt')
+})

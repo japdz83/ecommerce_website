@@ -625,7 +625,7 @@ form.search button:hover {
 }
 .text-content :where(h2, h3) span:first-child {
 	font-weight: var(--fw3);
-	columns: var(--ligth-text-color);
+	color: var(--ligth-text-color);
 }
 .text-content :where(h2, h3) span:last-child {
 	color: var(--secondary-color);
@@ -770,7 +770,7 @@ form.search button:hover {
 	display: flex;
 	flex-direction: column;
 }
-.products:where(.big, .main.one) .content {
+.products:where(.big, .main, .one) .content {
 	gap: 1em;
 	margin-top: 1.25em;
 }
@@ -786,6 +786,10 @@ form.search button:hover {
 	font-size: 12px !important;
 	background-position-y: top;
 	background-repeat-y: no-repeat !important;
+}
+/* to set width of stars */
+.products .item:where(:nth-child(3), :nth-child(3)) .stars {
+	width: 64px;
 }
 .products h3 {
 	font-family: "Rubik";
@@ -826,6 +830,14 @@ form.search button:hover {
 	display: flex;
 	position: relative;
 }
+.products .stock-danger {
+	color: var(--primary-color);
+}
+.flexwrap .row {
+	flex: 0 0 100%;
+	width: 100%;
+	margin-bottom: 2em;
+}
 
 /*=================================================================
   * ==== * 04 PRODUCT - b - Big Products Style * ==== *
@@ -859,17 +871,346 @@ form.search button:hover {
 /*=================================================================
   * ==== * 04 PRODUCT - d - Mian Products Style * ==== *
 ==================================================================*/
+.products.main .item {
+	flex-direction: column;
+	flex: 0 0 100%;
+	padding: 0 0.938em;
+	padding-bottom: 2em;
+}
+.products.main .media {
+	height: 390px;
+}
+.products.main .footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0 1em 1em;
+	border-radius: 7px;
+	z-index: 1;
+	background: linear-gradient(
+		0deg,
+		var(--ligth-bg-color) 0%,
+		var(--white-color) 70%
+	);
+	opacity: 0;
+	visibility: hidden;
+	will-change: opacity;
+	transition: all 0.2s ease-in-out;
+}
+.products.main .footer ul {
+	list-style: disc;
+	padding: 1.25em 0 0 1.25em;
+	line-height: 1.8;
+	border-top: 1px solid var(--border-color);
+	margin-top: 145px;
+}
+.products.main .item:hover .footer {
+	opacity: 1;
+	visibility: visible;
+}
+.products.main .item:hover .content > *:not(.footer) {
+	z-index: 3;
+}
 
 /*=================================================================
   * ==== * 05 BANNER -  - Banner Style * ==== *
 ==================================================================*/
+.banners .item {
+	position: relative;
+	background-color: var(--white-color);
+	border: 1px solid var(--border-color);
+}
+.banner .image {
+	text-align: right;
+}
+.banner .get-gray {
+	background-color: var(--border-color);
+}
+.banner :where(.text-content, .over-link) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: var(--porcent100);
+	height: var(--porcent100);
+}
+.banner .text-content {
+	padding: 1.5em 2.5em;
+}
+.banner h3 {
+	font-size: calc(1em + 0.5vw);
+	font-weight: var(--fw3);
+}
+.banner h3 span {
+	font-size: 80%;
+}
+.banner .primary-button {
+	z-index: 3;
+}
+.banners .product-categories .item {
+	display: flex;
+	padding: 1.5em;
+}
+.banners .product-categories .image {
+	max-width: 150px;
+}
+.mini-links ul {
+	font-size: var(--font-small);
+	color: var(--ligth-text-color);
+	margin-top: 1em;
+}
+.banners .second-links {
+	margin-top: 2em;
+}
+.mini-links li a:hover {
+	text-decoration: underline;
+}
+/*=================================================================
+  * ==== * 06 Footer -  - Footer Style * ==== *
+==================================================================*/
+/* ========== * Footer Newletter * ========== */
+.newsletter {
+	padding: 2.5em 0;
+	background-color: var(--dark-color);
+	color: var(--white-color);
+}
+.newsletter h3 {
+	font-size: 1.5em;
+}
+.newsletter p {
+	font-size: var(--fw3);
+	color: var(--border-color);
+	margin: 0.5em 0 1.5em;
+}
+.newsletter p strong {
+	color: var(--primary-color);
+}
+.newsletter form {
+	max-width: 500px;
+	width: var(--porcent100);
+}
+/* ========== * Footer Widgets * ========== */
+.widgets {
+	padding: 3.5em 2.5em;
+	background-color: var(--ligth-bg-color);
+}
+/* ========== * Footer Info * ========== */
+.footer-info {
+	padding: 3.5em 0 5em;
+}
+.footer-info .wrapper .flexcol {
+	align-items: center;
+	gap: 0;
+}
+.footer-info ul li a {
+	font-size: 1.25em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background-color: var(--ligth-bg-color);
+	border-radius: var(--porcent50);
+	margin: 0.25em;
+	transition: var(--trans-background);
+}
+.footer-info ul li a:hover {
+	background-color: var(--border-color);
+}
+.footer-info .logo a {
+	margin: 0 0 1em -0.75em;
+}
+.footer-info .mini-text {
+	margin-top: 2em;
+	text-align: center;
+}
+/* ========== * Footer Boton Menu * ========== */
+.menu-boton {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60px;
+	background-color: var(--white-color);
+	box-shadow: 0 -2px 10px rgb(0 0 0 / 10%);
+}
+.menu-boton nav li {
+	flex: 1;
+}
+.menu-boton nav li a {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.5em 0;
+	color: var(--ligth-text-color);
+	transition: var(--trans-color);
+}
+.menu-boton nav li a:hover {
+	color: var(--dark-color);
+}
+.menu-boton nav li a span {
+	font-size: var(--font-smaller);
+}
+.menu-boton nav li a i {
+	font-size: 1.25em;
+}
+.menu-boton .fly-item {
+	right: 50%;
+	width: 16px;
+	border-radius: var(--porcent50);
+	margin-right: -20px;
+	background-color: var(--secondary-dark-color);
+}
+/* ========== * Footer Boton Menu - Search * ========== */
+.search-bottom {
+	position: fixed;
+	bottom: 60px;
+	width: var(--porcent100);
+	padding: 2.5em 0;
+	background-color: var(--secondary-dark-color);
+	z-index: 1000;
+	visibility: hidden;
+	opacity: 0;
+	will-change: visibility, opcity;
+}
+.showsearch .search-bottom {
+	visibility: inherit;
+	opacity: 1;
+}
+.search-bottom .t-close {
+	position: absolute;
+	top: -54px;
+	right: 0;
+}
+.search-bottom .t-close:hover {
+	background-color: var(--primary-color);
+}
+/*=================================================================
+  * ==== * 07 Overlay -  - Overlay Style * ==== *
+==================================================================*/
+.overlay {
+	position: fixed;
+	width: var(--porcent100);
+	height: var(--porcent100);
+	top: 0;
+	left: 0;
+	z-index: 999;
+	background-color: rgba(0, 0, 0, 0.4);
+	visibility: hidden;
+	opacity: 0;
+}
+.showmenu .overlay {
+	opacity: 1;
+	visibility: inherit;
+	will-change: visibility, opcity;
+}
+/*=================================================================
+  * ==== * 08 Page Single -  - Page Single Style * ==== *
+==================================================================*/
+
+/* ========== * 08 Page Single - a - Departament Menu * ========== */
+.page-home .dpt-cat .dpt-trigger,
+.dpt-trigger .ri-close-line,
+.showdpt .dpt-trigger .ri-menu-3-line {
+	display: none;
+}
+.showdpt .dpt-trigger .ri-close-line {
+	display: block;
+}
+/* ========== * 08 Page Single - b - Breadcrumb * ========== */
+.breadcrumb {
+	font-size: var(--font-small);
+	margin-bottom: 2em;
+}
+.breadcrumb li:not(:last-child)::after {
+	content: "/";
+	padding: 0em 0.35em;
+}
+.breadcrumb li:last-child {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--ligth-text-color);
+}
+
+/* ========== * 08 Page Single - c - Products details * ========== */
+.products.one .item {
+	flex-direction: column;
+}
+.products.one .price .discount {
+	font-size: 1em;
+	font-weight: var(--fw7);
+	line-height: 1;
+	position: absolute;
+	top: 0;
+	bottom: auto;
+	padding: 1em;
+	z-index: 2;
+	background-color: var(--dark-color);
+	color: var(--white-color);
+	border-radius: var(--porcent50);
+	margin: 0.5em;
+}
+.products.one :where(.big-image, .small-image) {
+	overflow: hidden;
+}
+.products.one .big-image {
+	position: relative;
+	margin-bottom: 1em;
+}
+.products.one :where(.big-image, .small-image) img {
+	object-fit: cover;
+	width: var(--porcent100);
+	height: var(--porcent100);
+	display: block;
+}
+.products.one .thumbnail-show {
+	position: relative;
+	width: 130px;
+	height: 110px;
+	overflow: hidden;
+	margin: 0 2em 2em 0;
+}
+
+/* ========== * 08 Page Single - d - Products description * ========== */
+
+/* ========== * 08 Page Single - e - Products Review * ========== */
 
 /*=================================================================
   * ==== * 15 RESPONSIVE - Resposive Style * ==== *
 ==================================================================*/
+@media screen and (min-width: 481px) {
+	.products.main .item {
+		flex: 0 0 50%;
+	}
+	/* ========== * Page Single * ========== */
+	.products.one .big-image {
+		margin-bottom: 2em;
+	}
+	.products.one .image-show {
+		height: 680px;
+	}
+	.products.one .thumbnail-show {
+		height: 160px;
+	}
+}
+
 @media screen and (min-width: 768px) {
 	.products .price .cirrent {
 		font-size: 1.25em;
+	}
+	.products.mini,
+	.banner .row,
+	.widgets .row {
+		flex: 0 0 50%;
+	}
+	.products.main .item {
+		flex: 0 0 33.3333%;
+	}
+	.products.one .row {
+		flex: 0 0 50%;
+		width: 50%;
 	}
 }
 
@@ -1036,10 +1377,30 @@ form.search button:hover {
 		margin-left: 320px;
 	}
 	/* Trending Products */
-	.trending .products {
+	.trending .products,
+	.product-categories .row {
 		flex: 0 0 33.3333%;
 	}
 	.products.big .media {
 		max-height: 373px;
+	}
+	.products.main .item,
+	.widgets .row {
+		flex: 0 0 25%;
+	}
+	/* Footer */
+	.newsletter .box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	/* Page Single */
+	#page:not(.page-home) .dpt-menu {
+		display: none;
+		transition: all 0.35s ease;
+	}
+	#page.showdpt .dpt-menu {
+		display: block;
 	}
 }
