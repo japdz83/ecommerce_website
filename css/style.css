@@ -1167,10 +1167,27 @@ form.search button:hover {
 }
 .products.one .thumbnail-show {
 	position: relative;
-	width: 130px;
+	width: 130px !important;
 	height: 110px;
 	overflow: hidden;
 	margin: 0 2em 2em 0;
+}
+.products :is(.swiper-button-next, .swiper-button-prev) {
+	outline: 0;
+	color: var(--secondary-dark-color);
+	transition: var(--trans-background), transform 0.3s;
+}
+.products .big-image:hover .swiper-button-next {
+	transform: translateX(10px);
+}
+.products .big-image:hover .swiper-button-prev {
+	transform: translateX(-10px);
+}
+.products :is(.swiper-button-next, .swiper-button-prev)::after {
+	font-size: 1.5em;
+}
+.products .big-image:hover :is(.swiper-button-next, .swiper-button-prev) {
+	background-color: var(--ligth-bg-color);
 }
 
 /* ========== * 08 Page Single - d - Products description * ========== */
